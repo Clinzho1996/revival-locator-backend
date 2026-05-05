@@ -120,3 +120,92 @@ export const changePassword = async (req: any, res: Response) => {
 		});
 	}
 };
+
+// Add to your userController.ts
+
+export const getAllUsers = async (req: any, res: Response) => {
+	try {
+		const users = await User.find({}).select("-password");
+		return res.json({
+			success: true,
+			message: "Users retrieved successfully",
+			data: users,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "Failed to retrieve users",
+		});
+	}
+};
+
+export const updateUserRole = async (req: any, res: Response) => {
+	try {
+		const { id } = req.params;
+		const { role } = req.body;
+
+		if (!["user", "admin"].includes(role)) {
+			return res.status(400).json({
+				success: false,
+				message: "Invalid role",
+			});
+		}
+
+		const user = await User.findByIdAndUpdate(
+			id,
+			{ role },
+			{ new: true },
+		).select("-password");
+
+		if (!user) {
+			return res.status(404).json({
+				success: false,
+				message: "User not found",
+			});
+		}
+
+		return res.json({
+			success: true,
+			message: "User role updated successfully",
+			data: user,
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "Failed to update user role",
+		});
+	}
+};
+
+export const deleteUser = async (req: any, res: Response) => {
+	try {
+		const { id } = req.params;
+
+		// Prevent deleting your own account
+		if (id === req.user._id) {
+			return res.status(400).json({
+				success: false,
+				message: "Cannot delete your own account",
+			});
+		}
+
+		const user = await User.findByIdAndDelete(id);
+
+		if (!user) {
+			return res.status(404).json({
+				success: false,
+				message: "User not found",
+			});
+		}
+
+		return res.json({
+			success: true,
+			message: "User deleted successfully",
+		});
+	} catch (error) {
+		return res.status(500).json({
+			success: false,
+			message: "Failed to delete user",
+		});
+	}
+};
