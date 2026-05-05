@@ -11,10 +11,14 @@ export interface IEvent extends Document {
 	location: {
 		venue: string;
 		address: string;
+		city: string;
+		state: string;
+		country: string;
 		coordinates: [number, number]; // [lng, lat]
 	};
 	organizer: mongoose.Types.ObjectId;
 	attendees: number;
+	price: number;
 	status: "pending" | "approved";
 }
 
