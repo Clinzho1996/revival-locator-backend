@@ -2,14 +2,18 @@ import express from "express";
 import {
 	createResource,
 	deleteResource,
+	getResourceById,
 	getResources,
+	updateResource,
 } from "../controllers/resource.controller";
-import { protect } from "../middleware/auth";
+import { authorize, protect } from "../middleware/auth";
 
 const router = express.Router();
 
 router.get("/", getResources);
-router.post("/", protect, createResource);
-router.delete("/:id", protect, deleteResource);
+router.post("/", protect, authorize("admin"), createResource);
+router.delete("/:id", protect, authorize("admin"), deleteResource);
+router.get("/:id", protect, getResourceById);
+router.put("/:id", protect, authorize("admin"), updateResource);
 
 export default router;
