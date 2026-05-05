@@ -25,9 +25,19 @@ export const getCategories = async (_req: Request, res: Response) => {
 };
 
 export const updateCategory = async (req: Request, res: Response) => {
-	const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
-		new: true,
-	});
+	const { name, description } = req.body;
+
+	const category = await Category.findByIdAndUpdate(
+		req.params.id,
+		{
+			...(name !== undefined && { name }),
+			...(description !== undefined && { description }),
+		},
+		{
+			new: true,
+			runValidators: true,
+		},
+	);
 
 	if (!category) {
 		return res.status(404).json({
