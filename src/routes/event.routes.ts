@@ -7,12 +7,14 @@ import {
 	searchEvents,
 	updateEvent,
 } from "../controllers/event.controller";
+import { registerForEvent } from "../controllers/registration.controller";
 import { protect } from "../middleware/auth";
 
 const router = express.Router();
 
 router.get("/", getEvents);
 router.get("/search", searchEvents);
+router.post("/:eventId/register", registerForEvent);
 router.get("/:id", getEventById);
 
 router.post("/", protect, createEvent);
