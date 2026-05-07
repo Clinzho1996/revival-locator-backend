@@ -61,10 +61,11 @@ const BlogSchema = new Schema(
 		status: {
 			type: String,
 			enum: ["draft", "published"],
-			default: "draft",
+			default: "published",
 		},
 		publishedAt: {
 			type: Date,
+			default: Date.now,
 		},
 	},
 	{
@@ -72,13 +73,29 @@ const BlogSchema = new Schema(
 	},
 );
 
-// Create slug from title before saving
-BlogSchema.pre("save", function (next) {
-	if (this.isModified("title") && !this.slug) {
-		this.slug = this.title
-			.toLowerCase()
-			.replace(/[^a-z0-9]+/g, "-")
-			.replace(/^-|-$/g, "");
+// Function to generate slug from title
+function generateSlug(title: string): string {
+	return title
+		.toLowerCase()
+		.replace(/[^a-z0-9]+/g, "-")
+		.replace(/^-|-$/g, "");
+}
+
+// Pre-save middleware to generate slug
+BlogSchema.pre("save", async function (next) {
+	if (this.isModified("title")) {
+		let baseSlug = generateSlug(this.title);
+		let slug = baseSlug;
+		let counter = 1;
+
+		// Check if slug already exists
+		const existingBlog = await mongoose.models.Blog.findOne({ slug });
+		if (existingBlog && existingBlog._id.toString() !== this._id?.toString()) {
+			slug = `${baseSlug}-${counter}`;
+			counter++;
+		}
+
+		this.slug = slug;
 	}
 	next();
 });
