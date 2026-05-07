@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import analyticsRoutes from "./routes/analytics.routes";
 import authRoutes from "./routes/auth.routes";
+import blogRoutes from "./routes/blog.routes";
 import bookmarkRoutes from "./routes/bookmark.routes";
 import categoryRoutes from "./routes/category.routes";
 import chatRoutes from "./routes/chat.routes";
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/blogs", blogRoutes);
 app.use("/api/events", eventRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/events", eventRoutes);
