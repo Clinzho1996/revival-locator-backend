@@ -8,15 +8,15 @@ import {
 	likeBlog,
 	updateBlog,
 } from "../controllers/blog.controller";
-import { protect } from "../middleware/auth";
+import { authorize, protect } from "../middleware/auth";
 
 const router = express.Router();
 
-router.post("/", protect, createBlog);
+router.post("/", protect, authorize("admin"), createBlog);
 router.get("/", getBlogs);
 router.get("/:slug", getBlogBySlug);
-router.put("/:id", protect, updateBlog);
-router.delete("/:id", protect, deleteBlog);
+router.put("/:id", protect, authorize("admin"), updateBlog);
+router.delete("/:id", protect, authorize("admin"), deleteBlog);
 router.post("/:id/like", protect, likeBlog);
 
 export default router;
