@@ -12,12 +12,14 @@ import forumRoutes from "./routes/forum.routes";
 import resourceRoutes from "./routes/resource.routes";
 import reviewRoutes from "./routes/review.routes";
 import subscriberRoutes from "./routes/subscriber.routes";
+import testimonyRoutes from "./routes/testimony.routes";
 import userRoutes from "./routes/user.routes";
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use("/api/testimonies", testimonyRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/events", eventRoutes);
