@@ -2,9 +2,18 @@
 import { Request, Response } from "express";
 import Testimony from "../models/Testimony";
 
-export const createTestimony = async (req: any, res: Response) => {
+// Public submission - NO authentication required
+export const createPublicTestimony = async (req: Request, res: Response) => {
 	try {
 		const { name, event, content, rating, avatar } = req.body;
+
+		// Validate required fields
+		if (!name || !event || !content) {
+			return res.status(400).json({
+				success: false,
+				message: "Name, event, and content are required",
+			});
+		}
 
 		const testimony = await Testimony.create({
 			name,
@@ -12,7 +21,39 @@ export const createTestimony = async (req: any, res: Response) => {
 			content,
 			rating: rating || 5,
 			avatar: avatar || "",
-			status: "approved",
+			status: "pending", // Always pending for public submissions
+			likes: 0,
+			likedBy: [],
+		});
+
+		return res.status(201).json({
+			success: true,
+			message: "Testimony submitted for review successfully",
+			data: testimony,
+		});
+	} catch (error) {
+		console.error(error);
+		return res.status(500).json({
+			success: false,
+			message: "Failed to submit testimony",
+		});
+	}
+};
+
+// Admin create - WITH authentication
+export const createTestimony = async (req: any, res: Response) => {
+	try {
+		const { name, event, content, rating, avatar, status } = req.body;
+
+		const testimony = await Testimony.create({
+			name,
+			event,
+			content,
+			rating: rating || 5,
+			avatar: avatar || "",
+			status: status || "approved", // Admin can set status directly
+			likes: 0,
+			likedBy: [],
 		});
 
 		return res.status(201).json({
@@ -29,11 +70,12 @@ export const createTestimony = async (req: any, res: Response) => {
 	}
 };
 
+// Rest of the controller remains the same...
 export const getTestimonies = async (req: Request, res: Response) => {
 	try {
-		const { page = 1, limit = 10, status = "approved" } = req.query;
+		const { page = 1, limit = 10 } = req.query;
 
-		const query: any = { status };
+		const query: any = { status: "approved" }; // Only show approved testimonies to public
 
 		const testimonies = await Testimony.find(query)
 			.sort({ createdAt: -1 })
@@ -148,13 +190,11 @@ export const likeTestimony = async (req: any, res: Response) => {
 		const hasLiked = testimony.likedBy.includes(req.user._id);
 
 		if (hasLiked) {
-			// Unlike
 			testimony.likes -= 1;
 			testimony.likedBy = testimony.likedBy.filter(
 				(id) => id.toString() !== req.user._id.toString(),
 			);
 		} else {
-			// Like
 			testimony.likes += 1;
 			testimony.likedBy.push(req.user._id);
 		}
