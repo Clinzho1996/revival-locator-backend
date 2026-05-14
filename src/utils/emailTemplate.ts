@@ -50,7 +50,7 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 					max-width: 60px;
 					height: auto;
 					background-color: #ffffff;
-					border-radius: 50%;
+					border-radius: 10%;
 					padding: 8px;
 				}
 				.content { 
@@ -229,7 +229,7 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 60px; height: auto; background-color: #ffffff; border-radius: 50%; padding: 8px; }
+				.logo img { max-width: 60px; height: auto; background-color: #ffffff; border-radius: 10%; padding: 8px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.event-details { 
 					background-color: #ffffff; 
@@ -379,7 +379,7 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 				}
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 50%; padding: 8px; }
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10%; padding: 8px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.otp-box { 
 					background-color: #ffffff; 
