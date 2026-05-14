@@ -6,6 +6,8 @@ export interface IUser extends Document {
 	password: string;
 	role: "user" | "organizer" | "admin";
 	bookmarks: mongoose.Types.ObjectId[];
+	resetPasswordOTP?: string;
+	resetPasswordExpires?: Date;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -15,6 +17,8 @@ const UserSchema = new Schema<IUser>(
 		password: String,
 		role: { type: String, default: "user" },
 		bookmarks: [{ type: Schema.Types.ObjectId, ref: "Event" }],
+		resetPasswordOTP: { type: String },
+		resetPasswordExpires: { type: Date },
 	},
 	{ timestamps: true },
 );
