@@ -3,45 +3,57 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IEvent extends Document {
 	title: string;
 	description: string;
-	shortDescription: string;
+	shortDescription?: string;
 	category: mongoose.Types.ObjectId;
-	banner: string;
+	banner?: string;
 	date: Date;
-	startTime: string;
+	startTime?: string;
+	time?: string; // Add this for compatibility with frontend
 	location: {
 		venue: string;
 		address: string;
-		city: string;
-		state: string;
-		country: string;
-		coordinates: [number, number]; // [lng, lat]
+		city?: string;
+		state?: string;
+		country?: string;
+		coordinates?: [number, number]; // [lng, lat]
 	};
 	organizer: mongoose.Types.ObjectId;
 	attendees: number;
-	price: number;
-	status: "pending" | "approved";
+	isFree: boolean; // Add this
+	price: number; // Add this
+	status: "pending" | "approved" | "rejected";
 }
 
 const EventSchema = new Schema(
 	{
-		title: String,
-		description: String,
-		shortDescription: String,
+		title: { type: String, required: true },
+		description: { type: String, required: true },
+		shortDescription: { type: String },
 		category: { type: Schema.Types.ObjectId, ref: "Category" },
-		banner: String,
-		date: Date,
-		startTime: String,
+		banner: { type: String },
+		date: { type: Date, required: true },
+		startTime: { type: String },
+		time: { type: String }, // For frontend compatibility
 		location: {
-			venue: String,
-			address: String,
+			venue: { type: String },
+			address: { type: String, required: true },
+			city: { type: String },
+			state: { type: String },
+			country: { type: String },
 			coordinates: {
 				type: [Number],
 				index: "2dsphere",
 			},
 		},
-		organizer: { type: Schema.Types.ObjectId, ref: "User" },
+		organizer: { type: Schema.Types.ObjectId, ref: "User", required: true },
 		attendees: { type: Number, default: 0 },
-		status: { type: String, default: "pending" },
+		isFree: { type: Boolean, default: true }, // Add this
+		price: { type: Number, default: 0 }, // Add this
+		status: {
+			type: String,
+			enum: ["pending", "approved", "rejected"],
+			default: "pending",
+		},
 	},
 	{ timestamps: true },
 );

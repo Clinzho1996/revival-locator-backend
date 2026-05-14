@@ -42,6 +42,24 @@ export const updateEvent = async (req: any, res: Response) => {
 		const oldStatus = event.status;
 		const newStatus = req.body.status;
 
+		// Handle isFree and price relationship
+		if (req.body.isFree !== undefined) {
+			// If event is free, set price to 0 regardless of what was sent
+			if (req.body.isFree === true) {
+				req.body.price = 0;
+			}
+			// If event is not free, ensure price is a positive number
+			else if (
+				req.body.isFree === false &&
+				(!req.body.price || req.body.price <= 0)
+			) {
+				return res.status(400).json({
+					message:
+						"Price is required for paid events and must be greater than 0",
+				});
+			}
+		}
+
 		// Update the event
 		Object.assign(event, req.body);
 		await event.save();
@@ -76,7 +94,12 @@ export const updateEvent = async (req: any, res: Response) => {
 			}
 		}
 
-		res.json(event);
+		// Return the updated event with populated data
+		const updatedEvent = await Event.findById(event._id)
+			.populate("organizer")
+			.populate("category");
+
+		res.json(updatedEvent);
 	} catch (error) {
 		console.error("Error updating event:", error);
 		res.status(500).json({ message: "Failed to update event", error });
