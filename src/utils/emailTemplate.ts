@@ -46,7 +46,13 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 				.logo {
 					margin-bottom: 15px;
 				}
-				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
+				.logo img { 
+					max-width: 100px; 
+					height: auto; 
+					background-color: #ffffff; 
+					border-radius: 0; 
+					padding: 3px; 
+				}
 				.content { 
 					padding: 30px; 
 					background-color: #f9f9f9; 
@@ -81,6 +87,9 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 					text-decoration: none;
 					vertical-align: middle;
 				}
+				.social-icon img {
+					border-radius: 50%;
+				}
 				.footer { 
 					text-align: center; 
 					padding: 20px; 
@@ -106,15 +115,11 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 					.content { background-color: #2d2d2d; }
 					.event-details { background-color: #1a1a1a; border-left-color: #4CAF50; }
 					.footer { background-color: #1a1a1a; border-top-color: #333; }
-					.social-icon svg circle { stroke: none; }
 					h1, h2, h3, p, li { color: #e0e0e0; }
 					.event-details h3 { color: #e0e0e0; }
 					.content p, .content li { color: #b0b0b0; }
 					.footer p { color: #888; }
 					.copyright { color: #666; }
-					.social-icon {
-						background: transparent;
-					}
 				}
 				@media only screen and (max-width: 480px) {
 					.container { padding: 10px; }
@@ -127,7 +132,7 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 			<div class="container">
 				<div class="header">
 					<div class="logo">
-						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 50%; padding: 8px;">
+						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 0; padding: 3px;">
 					</div>
 					<h1>Event Approved! 🎉</h1>
 					<p>Your event is now live</p>
@@ -169,9 +174,9 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 							<img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="36" height="36" style="border-radius: 50%;">
 						</a>
 						
-						<!-- X (Twitter) -->
+						<!-- X (Twitter) - Using reliable CDN -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://cdn-icons-png.flaticon.com/512/5969/5969020.png" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
@@ -223,7 +228,7 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 0; padding: 3px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.event-details { 
 					background-color: #ffffff; 
@@ -251,6 +256,9 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 					text-decoration: none;
 					vertical-align: middle;
 				}
+				.social-icon img {
+					border-radius: 50%;
+				}
 				.footer { text-align: center; padding: 20px; font-size: 12px; color: #6b7280; border-top: 1px solid #e5e7eb; margin-top: 20px; background-color: #ffffff; }
 				.copyright { font-size: 11px; color: #9ca3af; margin-top: 10px; }
 				a { color: #B91C1C; text-decoration: none; }
@@ -277,7 +285,7 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 			<div class="container">
 				<div class="header">
 					<div class="logo">
-						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 50%; padding: 8px;">
+						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 0; padding: 3px;">
 					</div>
 					<h1>Event Update</h1>
 					<p>Review completed</p>
@@ -319,9 +327,9 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 							<img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="36" height="36" style="border-radius: 50%;">
 						</a>
 						
-						<!-- X (Twitter) -->
+						<!-- X (Twitter) - Using reliable CDN -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://cdn-icons-png.flaticon.com/512/5969/5969020.png" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
@@ -341,7 +349,6 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 	`,
 });
 
-// utils/emailTemplates.ts (add this function)
 export const getPasswordResetEmail = (name: string, otp: string) => ({
 	subject: "🔐 Reset Your Revival Locator Password",
 	html: `
@@ -373,7 +380,7 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 				}
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 0; padding: 3px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.otp-box { 
 					background-color: #ffffff; 
@@ -411,6 +418,9 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 					text-decoration: none;
 					vertical-align: middle;
 				}
+				.social-icon img {
+					border-radius: 50%;
+				}
 				a { color: #B91C1C; text-decoration: none; }
 				/* Dark mode overrides */
 				@media (prefers-color-scheme: dark) {
@@ -435,7 +445,7 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 			<div class="container">
 				<div class="header">
 					<div class="logo">
-						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 50%; padding: 8px;">
+						<img src="https://revival-locator.vercel.app/images/logo.png" alt="Revival Locator" style="max-width: 60px; height: auto; background-color: #ffffff; border-radius: 0; padding: 3px;">
 					</div>
 					<h1>Password Reset Request</h1>
 				</div>
@@ -464,9 +474,9 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 							<img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" width="36" height="36" style="border-radius: 50%;">
 						</a>
 						
-						<!-- X (Twitter) -->
+						<!-- X (Twitter) - Using reliable CDN -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://cdn-icons-png.flaticon.com/512/5969/5969020.png" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
