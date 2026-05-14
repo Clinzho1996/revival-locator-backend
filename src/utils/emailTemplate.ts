@@ -46,13 +46,7 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 				.logo {
 					margin-bottom: 15px;
 				}
-				.logo img {
-					max-width: 60px;
-					height: auto;
-					background-color: #ffffff;
-					border-radius: 10%;
-					padding: 8px;
-				}
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
 				.content { 
 					padding: 30px; 
 					background-color: #f9f9f9; 
@@ -177,7 +171,7 @@ export const getEventApprovedEmail = (organizerName: string, event: any) => ({
 						
 						<!-- X (Twitter) -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
@@ -229,7 +223,7 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.header p { margin: 10px 0 0; opacity: 0.9; font-size: 14px; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 60px; height: auto; background-color: #ffffff; border-radius: 10%; padding: 8px; }
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.event-details { 
 					background-color: #ffffff; 
@@ -327,7 +321,7 @@ export const getEventDeclinedEmail = (organizerName: string, event: any) => ({
 						
 						<!-- X (Twitter) -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
@@ -379,7 +373,7 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 				}
 				.header h1 { margin: 0; font-size: 28px; font-weight: bold; }
 				.logo { margin-bottom: 15px; }
-				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10%; padding: 8px; }
+				.logo img { max-width: 100px; height: auto; background-color: #ffffff; border-radius: 10px; padding: 3px; }
 				.content { padding: 30px; background-color: #f9f9f9; border-radius: 0 0 12px 12px; }
 				.otp-box { 
 					background-color: #ffffff; 
@@ -472,7 +466,7 @@ export const getPasswordResetEmail = (name: string, otp: string) => ({
 						
 						<!-- X (Twitter) -->
 						<a href="https://x.com/RevivalLocator" class="social-icon" target="_blank" style="display: inline-block; margin: 0 6px; width: 36px; height: 36px; text-decoration: none;">
-							<img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
+							<img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.b1fc7285.svg" alt="X" width="36" height="36" style="border-radius: 50%; background-color: #000; padding: 6px;">
 						</a>
 						
 						<!-- Facebook -->
